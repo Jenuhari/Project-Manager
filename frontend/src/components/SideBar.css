@@ -1,0 +1,124 @@
+/* basic sidebar styles with collapsed/expanded behavior */
+
+.sidebar-toggle-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1200;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #063b74;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* small burger visual */
+.sidebar-toggle-btn .burger,
+.sidebar-toggle-btn .burger::before,
+.sidebar-toggle-btn .burger::after {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  display: block;
+  position: relative;
+}
+.sidebar-toggle-btn .burger::before,
+.sidebar-toggle-btn .burger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.sidebar-toggle-btn .burger::before { top: -6px; }
+.sidebar-toggle-btn .burger::after  { top: 6px; }
+
+/* sidebar container */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 260px;
+  background: linear-gradient(180deg,#063b74,#063b74);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.12);
+  transition: transform 260ms ease, width 260ms ease;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* collapsed style: move off screen or shrink */
+.sidebar.collapsed {
+  transform: translateX(-100%);
+  width: 72px; /* if you want partially visible icons */
+}
+
+/* top/logo */
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.logo-img {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* hide search when collapsed */
+.sidebar.collapsed .search-wrap { display: none; }
+
+.search-input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+/* nav */
+.sidebar-nav ul { list-style: none; padding: 8px 0 40px 0; margin: 0; }
+.sidebar-nav li { margin-bottom: 6px; }
+.nav-btn {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+.nav-icon { width: 28px; display:inline-block; font-size:18px; text-align:center; }
+.nav-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sidebar.collapsed .nav-label { display: none; }
+
+/* active state */
+.sidebar-nav li.active .nav-btn {
+  background: rgba(255,255,255,0.06);
+}
+
+/* responsive tweak to show overlay when collapsed on small screens */
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.expanded { transform: translateX(0); }
+  .sidebar-toggle-btn { left: 12px; top: 12px; }
+}
+.sidebar-top {
+  margin-top: 60px;   /* You can adjust: 40px / 50px / 70px */
+}
+
+/* optional: keep things aligned nicely */
+.search-wrap {
+  margin-top: 10px;
+}

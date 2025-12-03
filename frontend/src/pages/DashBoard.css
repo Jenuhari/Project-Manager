@@ -1,0 +1,109 @@
+/* src/pages/DashBoard.css (or src/components/DashBoard.css) */
+
+/* app shell layout */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* sidebar */
+.app-sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #063b74 0%, #063b74 100%);
+  color: #fff;
+  padding: 18px 12px;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.12);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 1040;
+}
+
+.app-content {
+  margin-left: 260px;
+  flex: 1;
+}
+
+/* logo + hamburger */
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.logo img {
+  display: block;
+  max-width: 130px;
+}
+.hamburger {
+  margin-left: auto;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: #fff;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* search */
+.search-box input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  margin-top: 8px;
+}
+
+/* nav */
+.sidebar-nav ul {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+.sidebar-nav li {
+  margin-bottom: 4px;
+}
+.nav-btn {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  text-align: left;
+}
+.nav-btn .nav-icon {
+  font-size: 20px;
+  width: 28px;
+}
+.nav-btn .nav-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar-nav li.active .nav-btn {
+  background: rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+
+/* bottom */
+.sidebar-bottom {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* responsive */
+@media (max-width: 992px) {
+  .app-sidebar { width: 72px; }
+  .app-content { margin-left: 72px; }
+  .nav-btn .nav-label { display: none; }
+  .logo img { max-width: 48px; }
+}
